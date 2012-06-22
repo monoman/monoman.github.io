@@ -10,7 +10,7 @@ body {
 
 /* General & 'Reset' Stuff */
 
-.container, #downloads {
+.container {
   width: 90%;
   max-width: 1000px;
   margin: 0 auto;
@@ -69,10 +69,13 @@ header h2 {
 }
 
 #downloads {
-  display: block;
-  position: static;
-  bottom: 2px;
-  background-color: #222;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-width: 100%;
+  background-color: #781;
+  padding: 3px;
+  text-align: center;
 }
 
 #downloads .btn {
