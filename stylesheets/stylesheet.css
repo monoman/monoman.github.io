@@ -68,7 +68,7 @@ header h2 {
   color: #777;
 }
 
-#downloads .btn {
+#downloads {
   display: block;
   position: static;
   bottom: 2px;
