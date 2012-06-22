@@ -69,6 +69,13 @@ header h2 {
 }
 
 #downloads .btn {
+  display: block;
+  position: static;
+  bottom: 2px;
+  background-color: #222;
+}
+
+#downloads .btn {
   display: inline-block;
   text-align: center;
   margin: 0;
