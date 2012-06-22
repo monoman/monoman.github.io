@@ -10,9 +10,9 @@ body {
 
 /* General & 'Reset' Stuff */
 
-.container {
+.container, #downloads {
   width: 90%;
-  max-width: 600px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -65,7 +65,7 @@ header h1:before {
 header h2 {
   font-size: 18px;
   font-weight: 300;
-  color: #666;
+  color: #777;
 }
 
 #downloads .btn {
