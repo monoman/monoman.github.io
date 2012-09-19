@@ -1,5 +1,5 @@
 * {
-  font-family: Ubuntu, Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+  font-family: roboto, trebuchet ms, arial, helvetica, sans-serif;
 }
 
 body {
@@ -36,6 +36,7 @@ li {
    header   - container
    h1       - project name
    h2       - project description
+   h3		- organizations
 */
 
 header {
@@ -43,39 +44,49 @@ header {
   width: 100%;
   border-bottom: 1px dashed #b5e853;
   padding: 20px 0;
-  margin: 0 0 40px 0;
+  margin: 0;
 }
 
 header h1 {
-  font-size: 30px;
+  font-size: 30pt;
   line-height: 1.5;
   margin: 0 0 0 -40px;
   font-weight: bold;
   color: #b5e853;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
-               0 0 5px rgba(181, 232, 83, 0.1),
-               0 0 10px rgba(181, 232, 83, 0.1);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2),
+               0 0 5px rgba(181, 232, 83, 0.4),
+               0 0 10px rgba(181, 232, 83, 0.3);
   letter-spacing: -1px;
   -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-color: #657823;
+  -webkit-text-stroke-width: 1px;
 }
 
 header h1:before {
-  content: "./ ";
-  font-size: 24px;
+  content: ":-)";
+  font-size: 22pt;
+  vertical-align: text-top;
+  display: inline-block;
+  width: 40px;
 }
 
 header h2 {
-  font-size: 18px;
+  font-size: 16pt;
   font-weight: 300;
-  color: #777;
+  color: #ace;
+  font-style: oblique;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
 header h3 {
-  font-size: 16px;
+  font-size: 12pt;
   font-weight: 300;
-  color: gold;
+  color: lightyellow;
 }
 
+header h3 a {
+  color: #b5e853;
+}
 
 #downloads {
   position: fixed;
@@ -84,7 +95,7 @@ header h3 {
   width: 100%;
   max-width: 100%;
   background-color: #B5E853;
-  opacity: 0.7;
+  opacity: 0.9;
   z-index: 100;  
   padding: 3px;
   text-align: center;
@@ -210,7 +221,7 @@ hr {
 
 .btn {
   display: inline-block;
-  background: -webkit-linear-gradient(top, rgba(40, 40, 40, 0.3), rgba(35, 35, 35, 0.3) 50%, rgba(10, 10, 10, 0.3) 50%, rgba(0, 0, 0, 0.3));
+  background: -webkit-linear-gradient(top, rgba(40, 40, 40, 0.4), rgba(35, 35, 35, 0.4) 50%, rgba(10, 10, 10, 0.4) 50%, rgba(0, 0, 0, 0.4));
   padding: 8px 18px;
   border-radius: 50px;
   border: 2px solid rgba(0, 0, 0, 0.7);
