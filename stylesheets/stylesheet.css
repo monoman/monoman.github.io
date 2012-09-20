@@ -1,5 +1,5 @@
 * {
-  font-family: roboto, trebuchet ms, arial, helvetica, sans-serif;
+  font-family: 'Roboto', 'Trebuchet MS', arial, helvetica, sans-serif;
 }
 
 body {
@@ -7,7 +7,7 @@ body {
   padding: 0;
   background: #151515 url("../images/bkg.png") 0 0;
   color: #eaeaea;
-  font: 16px;
+  font-size: 16pt;
   line-height: 1.5;
 }
 
@@ -60,22 +60,26 @@ header h1 {
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-color: #657823;
   -webkit-text-stroke-width: 1px;
+  font-family: 'Bowlby One SC';
+  vertical-align: middle;
 }
 
 header h1:before {
   content: ":-)";
   font-size: 22pt;
-  vertical-align: text-top;
+  margin-top: -5px;
+  vertical-align: middle;
   display: inline-block;
   width: 40px;
+  font-family: 'Roboto';
 }
 
 header h2 {
-  font-size: 16pt;
-  font-weight: 300;
+  font-size: 18pt;
   color: #ace;
-  font-style: oblique;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+  font-family: Courgette, cursive;
+  font-style: italic;
 }
 
 header h3 {
@@ -221,6 +225,7 @@ hr {
 
 .btn {
   display: inline-block;
+  background-color: rgba(40,40,40,0.4);
   background: -webkit-linear-gradient(top, rgba(40, 40, 40, 0.4), rgba(35, 35, 35, 0.4) 50%, rgba(10, 10, 10, 0.4) 50%, rgba(0, 0, 0, 0.4));
   padding: 8px 18px;
   border-radius: 50px;
@@ -237,6 +242,7 @@ hr {
 }
 
 .btn:hover {
+  background-color: rgba(40,40,40,0.6);
   background: -webkit-linear-gradient(top, rgba(40, 40, 40, 0.6), rgba(35, 35, 35, 0.6) 50%, rgba(10, 10, 10, 0.8) 50%, rgba(0, 0, 0, 0.8));
 }
 
