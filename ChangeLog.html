@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Change Log</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="http://knockoutjs.com/downloads/knockout-3.2.0.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src ="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<style>
+		body { 
+			background-color: whitesmoke;
+			color: navy;
+			font-family: Calibri;
+			font-weight: bold; 
+		}
+		td, th {  padding: 2px; }
+		.log tr:nth-child(even) {background: rgb(230, 255, 230)}
+		.log tr:nth-child(odd) {background: #FFF}
+		input {padding-left: 5px}
+		.container {padding-top: 20px; padding-bottom: 20px; margin-left: 10px;}
+        .datefield {padding-left:20px; width:150px}
+		.nav-tabs, .tab-content {padding-left:20px}
+		.data-list { width:90% }
+        .data-list th {padding-left:20px}
+        .data-list td {padding-left:20px}
+        .data-list td:last-child {padding-right:20px}
+        #gitRepoUrl {width:640px}
+        #btnGo {padding: 1px 50px}
+	</style>
+    <script type="text/javascript">
+        var viewModel
+
+        $(document).ready(function () {
+			viewModel = dataBind()
+			$('#btnGo').on('click', function() {
+				getCommits()
+				getOpenIssues()
+				getClosedIssues()
+			})
+        })
+
+        function formatDates(classId) {
+            $(classId).each(function (index, dateElem) {
+                var formatted = moment(dateElem.textContent).format("DD/MM/YYYY HH:MM");
+                dateElem.textContent = formatted;
+            })
+        }
+		
+		function dataBind() {
+			var vm = new function() {		
+				this.gitRepoUrl = ko.observable("managed-commons/managed-commons-getoptions")
+				this.commits = ko.observable([])
+				this.openIssues = ko.observable([])
+				this.closedIssues = ko.observable([])
+			}
+			ko.applyBindings(vm);
+			return vm
+		}
+
+		function getCommits() {
+			$.ajax({
+				dataType: 'json',
+				url: 'https://api.github.com/repos/' + viewModel.gitRepoUrl() + '/commits',
+				success: showCommits,
+				error: function() {
+				    viewModel.commits([])
+				    viewModel.openIssues([])
+                    viewModel.closedIssues([])
+					alert("Unable to connect to repo '" + viewModel.gitRepoUrl() +"'")
+					}
+			})
+		}
+
+		// An error will be indicated when attempting to get the commits.
+		function getOpenIssues() {
+			$.ajax({
+				dataType: 'json',
+				url: 'https://api.github.com/repos/'  + viewModel.gitRepoUrl() + '/issues?state=open',
+				success: showOpenIssues
+			})
+		}
+		
+		function getClosedIssues() {
+			$.ajax({
+				dataType: 'json',
+				url: 'https://api.github.com/repos/'  + viewModel.gitRepoUrl() + '/issues?state=closed',
+				success: showClosedIssues
+			})
+		}
+
+		function showCommits(data) {
+			viewModel.commits(data)
+			formatDates('.commit-datefield')
+        }
+
+		function showOpenIssues(data) {
+			viewModel.openIssues(data)
+			formatDates('.open-issues-datefield')
+        }
+
+		function showClosedIssues(data) {
+			viewModel.closedIssues(data)
+			formatDates('.closed-issues-datefield')
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+	<label>Git Repo Name:</label>
+	<input type='text' id='gitRepoUrl' data-bind='value: gitRepoUrl'/>
+	<input type='button' id='btnGo' value='Go'/>
+</div>
+<div id="content">
+	<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+		<li class="active"><a href="#changeLog" data-toggle="tab">Change Log</a></li>
+		<li><a href="#openIssues" data-toggle="tab">Open Issues</a></li>
+		<li><a href="#closedIssues" data-toggle="tab">Closed Issues</a></li>
+	</ul> 
+	<div id="my-tab-content" class="tab-content">
+		<div class="tab-pane active" id="changeLog"> 
+			<h1>Change Log</h1>
+			<table class="data-list">
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Change</th>
+					</tr>
+				</thead>
+				<tbody class='log' data-bind="foreach: commits">
+					<tr>			
+						<td class='commit-datefield datefield' data-bind="text: commit.author.date"></td>
+						<td data-bind="text: commit.message"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="tab-pane" id="openIssues">
+			<h1>Open Issues</h1>
+			<table class="data-list">
+				<thead>
+					<tr>
+						<th>Number</th>
+						<th>Date</th>
+						<th>Issue</th>
+					</tr>
+				</thead>
+				<tbody class='log' data-bind="foreach: openIssues">
+					<tr>
+						<td data-bind="text: number"></td>
+						<td class='open-issues-datefield datefield' data-bind="text: created_at"></td>
+						<td data-bind="text: title, attr: { title: body }"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="tab-pane" id="closedIssues">
+			<h1>Closed Issues</h1>
+			<table class="data-list">
+				<thead>
+					<tr>
+						<th>Number</th>
+						<th>Date</th>
+						<th>Issue</th>
+					</tr>
+				</thead>
+				<tbody class='log' data-bind="foreach: closedIssues">
+					<tr>
+						<td data-bind="text: number"></td>
+						<td class='closed-issues-datefield datefield' data-bind="text: created_at"></td>
+						<td data-bind="text: title, attr: { title: body }"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</body>
+</html>
