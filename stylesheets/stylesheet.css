@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@900&family=Prompt:wght@900&family=Roboto&display=swap');
+
 * {
   font-family: 'Roboto', 'Trebuchet MS', arial, helvetica, sans-serif;
 }
@@ -7,7 +9,7 @@ body {
   padding: 0;
   background: #151515 url("../images/bkg.png") 0 0;
   color: #eaeaea;
-  font-size: 16pt;
+  font-size: 18pt;
   line-height: 1.5;
 }
 
@@ -15,7 +17,7 @@ body {
 
 .container {
   width: 90%;
-  max-width: 1000px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -40,56 +42,39 @@ li {
 */
 
 header {
-  background: rgba(0, 0, 0, 0.1);
   width: 100%;
-  border-bottom: 1px dashed #b5e853;
+  border-bottom: 2px dashed chartreuse;
   padding: 20px 0;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 1px;
   margin: 0;
 }
 
 header h1 {
-  font-size: 30pt;
+  font-size: 32pt;
   line-height: 1.5;
-  margin: 0 0 0 -40px;
   font-weight: bold;
-  color: #b5e853;
+  color: chartreuse;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2),
                0 0 5px rgba(181, 232, 83, 0.4),
                0 0 10px rgba(181, 232, 83, 0.3);
   letter-spacing: -1px;
-  -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-color: #657823;
-  -webkit-text-stroke-width: 1px;
-  font-family: 'Bowlby One SC';
+  font-family: Prompt, sans-serif;
   vertical-align: middle;
-}
-
-header h1:before {
-  content: ":-)";
-  font-size: 22pt;
-  margin-top: -5px;
-  vertical-align: middle;
-  display: inline-block;
-  width: 40px;
-  font-family: 'Roboto';
 }
 
 header h2 {
-  font-size: 18pt;
-  color: #ace;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
-  font-family: Courgette, cursive;
-  font-style: italic;
-}
-
-header h3 {
-  font-size: 12pt;
-  font-weight: 300;
-  color: lightyellow;
-}
-
-header h3 a {
-  color: #b5e853;
+    font-size: 24pt;
+    font-weight: bold;
+    color: #ad075b;
+    -webkit-text-stroke-color: #d99fff;
+    font-family: Exo, sans-serif;
+    margin: 0;
+    background-color: white;
+    border-radius: 4px;
+    padding: 4px 8px;
+    text-align: center;
 }
 
 #downloads {
@@ -115,16 +100,35 @@ header h3 a {
 */
 
 #main_content {
-  width: 100%;
-  -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    background-color: cadetblue;
+    padding: 4px 18px;
+    height: 90%;
+    margin: 10px 0;
+    border-color: chartreuse;
+    border-width: 2px !important;
+    display: block;
+    border-style: solid;
 }
+
+#main_content p {
+  font-size: 20pt;
+  color: lightyellow;
+  margin: 0;
+}
+
+#main_content p a {
+  color: chartreuse;
+}
+
+
 section img {
   max-width: 100%
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
-  color: #b5e853;
+  color: chartreuse;
   letter-spacing: -0.03em;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
                0 0 5px rgba(181, 232, 83, 0.1),
@@ -172,7 +176,7 @@ ul li {
 ul li:before {
   content: ">>";
   font-size: 13px;
-  color: #b5e853;
+  color: chartreuse;
   margin-left: -37px;
   margin-right: 21px;
   line-height: 16px;
@@ -189,7 +193,7 @@ pre {
   border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 10px;
   font-size: 14px;
-  color: #b5e853;
+  color: chartreuse;
   border-radius: 2px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
@@ -205,7 +209,7 @@ table {
 
 th {
   text-align: left;
-  border-bottom: 1px dashed #b5e853;
+  border-bottom: 1px dashed chartreuse;
   padding: 5px 10px;
 }
 
@@ -216,8 +220,8 @@ td {
 hr {
   height: 0;
   border: 0;
-  border-bottom: 1px dashed #b5e853;
-  color: #b5e853;
+  border-bottom: 2px dashed chartreuse;
+  color: chartreuse;
 }
 
 /* Buttons
