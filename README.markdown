@@ -1,6 +1,6 @@
 # Monoman's user page at GitHub #
 
-http://monoman.github.com/
+https://monoman.github.io/
 	
 ## The Git Workflow
 
